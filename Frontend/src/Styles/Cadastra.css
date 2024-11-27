@@ -1,0 +1,10 @@
+.caixa {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0.808)), url('../imgs/fundoRoxinhoLindao.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mensagemCaixa{
+    width: 300px !important;
+    height: 200px;
+    border-radius: 0px 10px 10px 10px !important;
+}
