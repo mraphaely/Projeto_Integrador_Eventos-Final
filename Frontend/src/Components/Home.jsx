@@ -71,9 +71,8 @@ const Home = () => {
                 <P4>lorem ipsum amet,  simpli team  printing
 theme make types icluding page maker labore active presents</P4>
                 </SpanMini4>
-                <Btn4>CLICK</Btn4>
+                <Btn4 to={'PagLogin'}>CLICK</Btn4>
             </Span3>
-
         </Caixa>
     )
 }

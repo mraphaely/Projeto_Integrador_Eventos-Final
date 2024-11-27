@@ -5,8 +5,9 @@ import axios from 'axios';
 const Register = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [confirma_senha, setConfirmaSenha] = useState('');
+    const [verifica_senha, setVerificaSenha] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -14,7 +15,9 @@ const Register = () => {
         const formData = new FormData();
         formData.append('email', email);
         formData.append('senha', senha);
-        formData.append('confirma_senha', confirma_senha);
+        formData.append('verifica_senha', verifica_senha);
+
+
 
         try {
             const response = await axios.post('http://localhost:3333/usuarios/cadastrar', formData, {
@@ -25,7 +28,7 @@ const Register = () => {
             setMessage('Usuário cadastrado com sucesso!');
             setEmail('');  
             setSenha('');  
-            setConfirmaSenha('');  
+            setVerificaSenha('');  
         } catch (error) {
             console.error('Erro ao cadastrar usuário:', error.response || error);
             setMessage('Erro ao cadastrar usuário');
@@ -61,18 +64,18 @@ const Register = () => {
                         onChange={(e) => setSenha(e.target.value)}
                     />
 
-                    <Label htmlFor='confirma_senha' controlId="confirma_senha">Repetir senha:</Label>
+                    <Label htmlFor='verifica_senha' controlId="verifica_senha">Repetir senha:</Label>
                     <Input
                         type='password'
-                        id='confirma_senha'
+                        id='verifica_senha'
                         name='ConfirmaSenha'
-                        value={confirma_senha}
-                        onChange={(e) => setConfirmaSenha(e.target.value)}
+                        value={verifica_senha}
+                        onChange={(e) => setVerificaSenha(e.target.value)}
                     />
                     <Btn2 variant="primary" type="submit">CADASTRAR</Btn2>
                 </LabelsInputs>
             </Caixinha2>
-            {message && <p>{message}</p>}
+            {message ? <p style={{color: "#ffff", backgroundColor: "none", display: "flex",  fontSize: "15px", marginTop: "10px"}}>{message}</p> : <p>{loading}</p>}
         </Caixa>
     );
 }

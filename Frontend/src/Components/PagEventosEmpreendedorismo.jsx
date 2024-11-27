@@ -29,9 +29,13 @@ const Lista = () => {
   }, []);
 
   return (
-    <Container className='container'>
-      <Row  style={{backgroundColor: "#000"}}  className="justify-content-md-center">
-        <Col><H1>Eventos de Empreendedorismo:</H1></Col>
+    <Container className='container' style={{backgroundColor: "#000", height: "90vh"}}>
+      <Row  style={{backgroundColor: "#000", marginLeft:"20px"}}  className="justify-content-md-center">
+        <Col> 
+        <div  style={{backgroundColor: "#000" }} >
+        <H1>Eventos de Empreendedorismo:</H1>
+        </div>
+        </Col>
       </Row>
       <Row style={{backgroundColor: "#000"}}>
         <Col sm>    

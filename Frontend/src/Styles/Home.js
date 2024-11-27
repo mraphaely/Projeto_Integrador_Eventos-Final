@@ -8,6 +8,7 @@ margin: 0px !important;
 flex-wrap: nowrap;
 flex-direction: column;
 align-items: center;
+height: 120vh;
 `
 //CAIXA 1 ============================================
 
@@ -62,7 +63,8 @@ export const BntP = styled(Link)`
     border-bottom-right-radius: 20px;
     cursor: pointer;
     color: #000;
-    &: hover { background-color: #AD6CFF; color:#fff}
+    &:hover 
+    { background-color: #AD6CFF; color:#fff}
 `
 
 
@@ -116,6 +118,11 @@ width: 50px !important;
 
 export const Btn = styled(Link)`
 color: #fff;
+background-color: rgba(255, 255, 255, 0.29);
+border-radius: 5px;
+width: 150px;
+text-align: center;
+margin-top: 15px;
 text-decoration: none;
 font-size: 24px;
 `
@@ -136,6 +143,11 @@ export const Btn2 = styled(Link)`
 color: #000;
 text-decoration: none;
 font-size: 24px;
+background-color: rgba(255, 255, 255, 0.29);
+border-radius: 5px;
+width: 150px;
+text-align: center;
+margin-top: 15px;
 `
 
 export const SpanBtn2 = styled.span`

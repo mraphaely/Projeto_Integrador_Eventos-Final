@@ -1,10 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { Table, Button, Card } from "react-bootstrap";
-import {H1, Caixa2, Container, CaixaH1} from '../Styles/PagGetEventos.js'
+import { Card, Row, Col, Container } from "react-bootstrap";
+import {H1, ButtonGet} from '../Styles/PagGetEventos.js'
 
+import '../Styles/PagEventos.css'
 
-const PagEventosGeral = () => {
+const PagEventosTecnologia = () => {
   const [eventos, setEventos] = React.useState([]);
 
   React.useEffect(() => {
@@ -28,46 +29,42 @@ const PagEventosGeral = () => {
   }, []);
 
   return (
-    <Container className='container'>
-
-          <CaixaH1 className='caixa2'>
-            <H1>Eventos em Geral:</H1>
-          </CaixaH1>
-        <Caixa2>
-
-    <Table striped bordered hover>
-      <tbody>
+    <Container className='container' style={{backgroundColor: "#000", height: "90vh"}}>
+      <Row  style={{backgroundColor: "#000", marginLeft:"20px"}}  className="justify-content-md-center">
+        <Col> 
+        <H1>Eventos de Tecnologia:</H1>
+        </Col>
+      </Row>
+      <Row style={{backgroundColor: "#000"}}>
+        <Col sm>    
+        <Container striped bordered hover>
+      <tbody className="d-flex">
         {eventos.length > 0 ? (
           eventos.map((evento) => (
             <React.Fragment key={evento.id}>
               <div className="d-flex justify-content-around">
               <Card className="important-padding2" style={{ width: '355px', height:'355px', background: 'linear-gradient( #2D0065 50%, #5A00CB)',fontSize:'24px'  }}>
-                  <Card.Img variant="top" src={`http://localhost:3333/eventos/${evento.image}`} />
+                  <Card.Img variant="top" src={`http://localhost:3333/images/${evento.image}`} />
                   <Card.Body>
                     <Card.Title  style={{ color: '#fff', marginLeft: '20px', marginTop: '20px' }}>{evento.titulo}</Card.Title>
                     <Card.Text style={{color:'#fff', width:'344px', marginLeft: '20px', marginTop: '10px', fontSize:'20px' }}>{evento.palestrante}</Card.Text>
                     <Card.Text style={{color:'#fff', width:'344px', marginLeft: '20px', marginTop: '10px', fontSize:'20px' }}>{evento.descricao}</Card.Text>
-                    <Button  variant="primary" className="important-padding" style={{border: 'none', color: '#fff', fontSize: '20px', backgroundColor: 'rgba(255, 255, 255, 0.29)' }}>Saiba mais</Button>
+                    <ButtonGet  className="ButtomEventos" to={'/selecionarEvento'}>Saiba mais</ButtonGet>
                   </Card.Body>
                 </Card>
-
-
               </div>
             </React.Fragment>
           ))
         ) : (
           <tr>
-            <td colSpan="5">Nenhum evento disponível</td>
+            <td colSpan="5" style={{backgroundColor: "#000", color: "#fff"}}>Nenhum evento disponível</td>
           </tr>
         )}
       </tbody>
-    </Table>
-    {/* </Linha> */}
-          {/* </Linhas> */}
-
-        </Caixa2>
+    </Container></Col>
+      </Row>
       </Container>
   );
-}
+};
 
-export default PagEventosGeral
+export default PagEventosTecnologia;

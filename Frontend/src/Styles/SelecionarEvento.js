@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CaixaSelecionarEvento = styled.div`
   display: flex;
   background-color: #000;
-  height:65vh;
+  height: 75vh;
   color: #fff;
   flex-direction: row;
   justify-content: center;
