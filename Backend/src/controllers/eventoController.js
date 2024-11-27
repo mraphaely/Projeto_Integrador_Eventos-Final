@@ -74,24 +74,51 @@ export const create = async (request, response) => {
         return response.status(400).json(createValidation.error);
     }
 
-    const { titulo, local, image, cidade, data, categoria, palestrante, vagas, ingresso } = createValidation.data;
-    
+    const { titulo, local, cidade, data, categoria, palestrante, vagas, ingresso } = createValidation.data;
+
     // Campo opcional
-    const descricao = request.body?.descricao || null
+    const descricao = request.body?.descricao || null;
     const disponibilidade = request.body?.disponibilidade || "Disponível";
 
+    let image = null;
+    if (request.file) {
+        image = request.file.filename; 
+    }
+
     const novoEvento = { titulo, local, image, cidade, data, categoria, palestrante, vagas, ingresso, descricao, disponibilidade };
-        if (request.file) {
-            image = request.filename;
-        }
+
     try {
         const addEvento = await Evento.create(novoEvento);
         response.status(201).json({ message: "Evento criado", addEvento });
     } catch (error) {
-        console.log(error)
+        console.log(error);
         response.status(500).json({ message: "Erro ao criar evento" });
     }
 };
+// export const create = async (request, response) => {
+//     const createValidation = createSchema.safeParse(request.body);
+//     if (!createValidation.success) {
+//         return response.status(400).json(createValidation.error);
+//     }
+
+//     const { titulo, local, image, cidade, data, categoria, palestrante, vagas, ingresso } = createValidation.data;
+    
+//     // Campo opcional
+//     const descricao = request.body?.descricao || null
+//     const disponibilidade = request.body?.disponibilidade || "Disponível";
+
+//     const novoEvento = { titulo, local, image, cidade, data, categoria, palestrante, vagas, ingresso, descricao, disponibilidade };
+//         if (request.file) {
+//             image = request.filename;
+//         }
+//     try {
+//         const addEvento = await Evento.create(novoEvento);
+//         response.status(201).json({ message: "Evento criado", addEvento });
+//     } catch (error) {
+//         console.log(error)
+//         response.status(500).json({ message: "Erro ao criar evento" });
+//     }
+// };
 
 // GET => 3333/eventos/select?page=1&limit=10
 export const getEventos = async (request, response) => {

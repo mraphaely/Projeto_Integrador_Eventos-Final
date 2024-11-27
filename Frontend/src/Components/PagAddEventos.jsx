@@ -10,7 +10,7 @@ import {
   Linha2,
   Linha3,
   Btn,
-} from "../Styles/PagAddEventos"; 
+} from "../Styles/PagAddEventos";
 import "../Styles/PagAddEventos.css";
 import axios from "axios";
 
@@ -122,14 +122,20 @@ const PagAddEventos = () => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="categoria">
                 <Label>Categoria:</Label>
-                <Form.Control
-                  type="text"
+                {/* <Form.Control
                   className="input"
-                  placeholder="Digite a categoria do seu evento"
+                  as="select"
+                  placeholder="Escolha a categoria do seu evento"
                   value={categoria}
                   onChange={(event) => setCategoria(event.target.value)}
                   required
-                />
+                /> */}
+                <Form.Select aria-label="Default select example" className="input">
+                  <option>Selecione a categoria do seu evento</option>
+                  <option value="1">Geral</option>
+                  <option value="2">Tecnologia</option>
+                  <option value="3">Empreendedorismo</option>
+                </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3" controlId="palestrante">
                 <Label>Palestrante:</Label>
@@ -167,19 +173,31 @@ const PagAddEventos = () => {
                 required
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Label>Descrição:</Label>
-            <Form.Control as="textarea" rows={3} 
-            className="input2"
-            value={descricao}
-            onChange={(event) => setDescricao(event.target.value)}/>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Label>Descrição:</Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                className="input2"
+                value={descricao}
+                onChange={(event) => setDescricao(event.target.value)}
+              />
             </Form.Group>
           </Linha3>
 
           <Btn variant="primary" type="submit" className="btn">
             CADASTRAR
           </Btn>
-          {message ? <p style={{color: "#ffff", display: "flex", textAlign: "center"}}>{message}</p> : <p>{loading}</p>}
+          {message ? (
+            <p style={{ color: "#ffff", display: "flex", marginLeft: "650px", fontSize: "20px" }}>
+              {message}
+            </p>
+          ) : (
+            <p>{loading}</p>
+          )}
         </Form>
       </Caixa>
     </Caixa1>
@@ -187,4 +205,3 @@ const PagAddEventos = () => {
 };
 
 export default PagAddEventos;
-

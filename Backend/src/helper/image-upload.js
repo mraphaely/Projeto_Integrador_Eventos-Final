@@ -5,24 +5,25 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-//estruturar onde vou guardar as imagens
+
 const imageStorage = multer.diskStorage({
     destination: (request, file, callback) => {
         callback(null, path.join(__dirname, `../images`));
     },
     filename: (request, file, callback) => {
-        //nome do arquivo
+        // Definir nome único para o arquivo (timestamp + aleatório)
         callback(null, Date.now() + String(Math.floor(Math.random() * 10000)) +
-            path.extname(file.originalname)
-        );
+            path.extname(file.originalname)); 
     }
 });
-//executar a função para guardar imagem
+
+
 const imageUpload = multer({
     storage: imageStorage,
-    fileFilter(request, file, callback){
-        if ( !file.originalname.match(/\.(png||jpg||jpeg)$/) ) {
-          return callback(new Error ("Por favor, envie apenas jpg ou png!"));
+    fileFilter(request, file, callback) {
+        // Filtra para aceitar apenas png, jpg ou jpeg
+        if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
+            return callback(new Error("Por favor, envie apenas arquivos jpg ou png!"));
         }
         callback(null, true);  
     }
