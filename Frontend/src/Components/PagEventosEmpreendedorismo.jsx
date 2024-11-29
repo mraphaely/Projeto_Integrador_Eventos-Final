@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Card, Row, Col, Container } from "react-bootstrap";
 import {H1, ButtonGet} from '../Styles/PagGetEventos.js'
+import eventoCard from "../imgs/eventoCard.jpg"
 
 import '../Styles/PagEventos.css'
 
@@ -46,11 +47,12 @@ const Lista = () => {
             <React.Fragment key={evento.id}>
               <div className="d-flex justify-content-around">
               <Card className="important-padding2" style={{ width: '355px', height:'355px', background: 'linear-gradient( #2D0065 50%, #5A00CB)',fontSize:'24px'  }}>
-                  <Card.Img variant="top" src={`http://localhost:3333/images/${evento.image}`} />
+                  {/* <Card.Img variant="top" src={`http://localhost:3333/images/${evento.image}`} /> */}
+                  <Card.Img variant="top" src={eventoCard} style={{borderRadius: '10px'}} />
                   <Card.Body>
-                    <Card.Title  style={{ color: '#fff', marginLeft: '20px', marginTop: '20px' }}>{evento.titulo}</Card.Title>
-                    <Card.Text style={{color:'#fff', width:'344px', marginLeft: '20px', marginTop: '10px', fontSize:'20px' }}>{evento.palestrante}</Card.Text>
-                    <Card.Text style={{color:'#fff', width:'344px', marginLeft: '20px', marginTop: '10px', fontSize:'20px' }}>{evento.descricao}</Card.Text>
+                    <Card.Title  style={{ color: '#fff', marginLeft: '10px', marginTop: '20px' }}>{evento.titulo}</Card.Title>
+                    <Card.Text style={{color:'#fff', width:'344px', marginLeft: '10px', marginTop: '10px', fontSize:'20px' }}>{evento.palestrante}</Card.Text>
+                    {/* <Card.Text style={{color:'#fff', width:'344px', marginLeft: '20px', marginTop: '10px', fontSize:'20px' }}>{evento.descricao}</Card.Text> */}
                     <ButtonGet  className="ButtomEventos" to={'/selecionarEvento'}>Saiba mais</ButtonGet>
                   </Card.Body>
                 </Card>
@@ -58,8 +60,8 @@ const Lista = () => {
             </React.Fragment>
           ))
         ) : (
-          <tr>
-            <td colSpan="5" style={{backgroundColor: "#000", color: "#fff"}}>Nenhum evento disponível</td>
+          <tr style={{backgroundColor: "#000", color: "#fff", justifyContent:"center"}}>
+            <td colSpan="5" style={{backgroundColor: "#000", color: "#fff", justifyContent:"center"}}>  Nenhum evento disponível</td>
           </tr>
         )}
       </tbody>
