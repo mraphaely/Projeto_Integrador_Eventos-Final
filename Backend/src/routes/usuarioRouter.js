@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { inscricao, login, logout, create } from "../controllers/usuarioController.js";
+import { inscricao, login, create } from "../controllers/usuarioController.js";
 
 //middleware
 import verifyToken from "../middleware/verify-token.js";

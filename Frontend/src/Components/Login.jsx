@@ -14,9 +14,11 @@ const Login = () => {
         setLoading("Carregando...");
 
         try {
-                await axios.post('http://localhost:3333/eventos/usuarios/login', {
-                message
-            });
+                const teste = await axios.post('http://localhost:3333/eventos/usuarios/login', {
+                    email,
+                    senha
+                });
+                console.log(teste)
             setMessage('Usuário logado com sucesso!');
             setLoading('')
             setEmail('');  

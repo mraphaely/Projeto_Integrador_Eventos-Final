@@ -57,9 +57,9 @@ export const login = async (request, response) => {
   }
 };
 
-export const logout = async (request, response) => {
-  response.status(200).json({ message: "Logout realizado com sucesso." });
-};
+// export const logout = async (request, response) => {
+//   response.status(200).json({ message: "Logout realizado com sucesso." });
+// };
 
 export const inscricao = async (request, response) => {
   try {

@@ -15,7 +15,9 @@ const Register = () => {
 
         try {
                 await axios.post('http://localhost:3333/eventos/usuarios/cadastro', {
-                message
+                    email,
+                    senha,
+                    verifica_senha
             });
             setMessage('Usuário cadastrado com sucesso!');
             setLoading('')

@@ -8,7 +8,7 @@ margin: 0px !important;
 flex-wrap: nowrap;
 flex-direction: column;
 align-items: center;
-height: 120vh;
+height: 150vh;
 `
 //CAIXA 1 ============================================
 
