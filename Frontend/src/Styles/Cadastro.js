@@ -22,7 +22,7 @@ export const Caixinha1 = styled.div`
   background: linear-gradient(0deg, #5A00CB 0%, #2D0065 100%);
 `;
 
-export const Caixinha2 = styled.div`
+export const Caixinha2 = styled.form`
   width: 485.32px;
   margin: 30px 0px;
   height: 551.5px;
@@ -54,7 +54,7 @@ export const Btn = styled(Link)`
   }
 `;
 
-export const Btn2 = styled(Link)`
+export const Btn2 = styled.button`
   color: #fff;
   display: flex;
   width: 200px;

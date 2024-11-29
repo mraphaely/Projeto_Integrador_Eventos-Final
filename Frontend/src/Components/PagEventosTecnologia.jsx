@@ -57,7 +57,7 @@ const PagEventosTecnologia = () => {
           ))
         ) : (
           <tr>
-            <td colSpan="5" style={{backgroundColor: "#000", color: "#fff"}}>Nenhum evento disponível</td>
+            <td colSpan="5" style={{backgroundColor: "#000", color: "#fff", marginLeft:"20px"}}>Nenhum evento disponível</td>
           </tr>
         )}
       </tbody>

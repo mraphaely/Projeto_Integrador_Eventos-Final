@@ -30,7 +30,7 @@ export const create = async (request, response) => {
       response.status(201).json({ mensagem: "Usuário cadastrado com sucesso" });
     }
   } catch (error) {
-    response.status(500).json({ err: "err" }, error);
+    response.status(500).json(error);
   }
 };
 

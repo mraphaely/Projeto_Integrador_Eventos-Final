@@ -1,36 +1,29 @@
 import { Caixa, Caixinha1, Caixinha2, H1, P, Btn, Btn2, LabelsInputs, Label, Input } from "../Styles/Cadastro.js";
-import { useState } from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 const Register = () => {
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [verifica_senha, setVerificaSenha] = useState('');
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState('');
+    const [email, setEmail] = React.useState('');
+    const [senha, setSenha] = React.useState('');
+    const [verifica_senha, setVerificaSenha] = React.useState('');
+    const [message, setMessage] = React.useState('');
+    const [loading, setLoading] = React.useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('senha', senha);
-        formData.append('verifica_senha', verifica_senha);
-
-
+        setLoading("Carregando...");
 
         try {
-            const response = await axios.post('http://localhost:3333/usuarios/cadastrar', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
+                await axios.post('http://localhost:3333/eventos/usuarios/cadastro', {
+                message
             });
             setMessage('Usuário cadastrado com sucesso!');
+            setLoading('')
             setEmail('');  
             setSenha('');  
             setVerificaSenha('');  
         } catch (error) {
-            console.error('Erro ao cadastrar usuário:', error.response || error);
+            console.log('Erro ao cadastrar usuário:', error);
             setMessage('Erro ao cadastrar usuário');
         }
     };
@@ -43,39 +36,40 @@ const Register = () => {
                 <Btn to='/PagLogin'>ENTRAR</Btn>
             </Caixinha1>
 
-            <Caixinha2 className="caixa">
+            <Caixinha2 className="caixa" onSubmit={handleSubmit}>
                 <H1>Faça Cadastro no codemarket</H1>
-                <LabelsInputs onSubmit={handleSubmit}>
+                <LabelsInputs>
                     <Label htmlFor='email' controlId="email">Email:</Label>
                     <Input
                         type='text'
                         id='email'
-                        name='Email'
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(event) => setEmail(event.target.value)}
+                        required
                     />
 
                     <Label htmlFor='senha' controlId="senha">Senha:</Label>
                     <Input
                         type='password'
                         id='senha'
-                        name='Senha'
                         value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
+                        onChange={(event) => setSenha(event.target.value)}
+                        required
                     />
 
                     <Label htmlFor='verifica_senha' controlId="verifica_senha">Repetir senha:</Label>
                     <Input
                         type='password'
                         id='verifica_senha'
-                        name='ConfirmaSenha'
                         value={verifica_senha}
-                        onChange={(e) => setVerificaSenha(e.target.value)}
+                        onChange={(event) => setVerificaSenha(event.target.value)}
+                        required
                     />
-                    <Btn2 variant="primary" type="submit">CADASTRAR</Btn2>
+                    <Btn2 type="submit">CADASTRAR</Btn2>
                 </LabelsInputs>
+                {message ? <p style={{color: "#ffff", backgroundColor: "none", display: "flex",  fontSize: "15px", marginTop: "10px"}}>{message}</p> 
+                : <p style={{color: "#ffff", backgroundColor: "none", display: "flex",  fontSize: "15px", marginTop: "10px"}}>{loading}</p>}
             </Caixinha2>
-            {message ? <p style={{color: "#ffff", backgroundColor: "none", display: "flex",  fontSize: "15px", marginTop: "10px"}}>{message}</p> : <p>{loading}</p>}
         </Caixa>
     );
 }
